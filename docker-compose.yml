@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  timepulse:
+    image: gapp/timepulse
+    build:
+      context: .
+      args:
+        ENVIRONMENT: production
+    ports:
+      - ${PORT:-4100}:3000
+    networks:
+      - gapp-network
+    command: python app.py
+
+networks:
+  gapp-network:

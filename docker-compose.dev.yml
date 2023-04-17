@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  timepulse:
+    image: gapp/timepulse
+    build:
+      context: .
+      args:
+        ENVIRONMENT: develop
+    volumes:
+      - ./:/app
+    ports:
+      - ${PORT:-4100}:3000
+    networks:
+      - gapp-network
+    command: nodemon app.py
+
+networks:
+  gapp-network:
