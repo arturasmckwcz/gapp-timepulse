@@ -1,6 +1,6 @@
 import os
 
-environment = os.environ.get('ENVIRONMENT')
+environment = os.environ.get('ENV')
 
 
 def log_debug(*args):
