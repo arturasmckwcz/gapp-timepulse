@@ -8,13 +8,12 @@ RUN pip install -r requirements.txt
 COPY . .
 
 ARG ENVIRONMENT
-ENV ENVIRONMENT=${ENVIRONMENT}
+ENV ENV=${ENVIRONMENT}
 
-RUN if [ "$ENVIRONMENT" = "develop" ]; then \
+RUN if [ "$ENVIRONMENT" = "develop" ] || [ "$ENVIRONMENT" = "debug" ]; then \
       apt update ; \
       apt install -y npm ; \
       npm i -g nodemon ; \
     fi
 
-ENV PYTHONUNBUFFERED 1
-
+ENV PYTHONUNBUFFERED=1
