@@ -11,7 +11,19 @@ services:
       - ${PORT:-4100}:3000
     networks:
       - gapp-network
-    command: python app.py
+    command:
+      [
+        'uwsgi',
+        '--http',
+        '0.0.0.0:3000',
+        '--master',
+        '--threads',
+        '2',
+        '-p',
+        '2',
+        '-w',
+        'wsgi:app',
+      ]
 
 networks:
   gapp-network:
