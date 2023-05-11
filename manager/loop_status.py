@@ -1,18 +1,19 @@
 from enum import Enum
 
 
-class Statuses(Enum):
+class loop_statuses(Enum):
     LOOP = 1
     STOP = 2
 
 
-loop = {'status': Statuses.STOP}
+class loop_status:
+    _status = loop_statuses.STOP
 
+    @classmethod
+    def get_status(cls):
+        return cls._status
 
-def get_loop_status():
-    return loop['status']
-
-
-def set_loop_status(value):
-    if value in Statuses:
-        loop['status'] = value
+    @classmethod
+    def set_status(cls, value):
+        if isinstance(value, loop_statuses):
+            cls._status = value
