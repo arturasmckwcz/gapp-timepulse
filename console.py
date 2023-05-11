@@ -4,7 +4,7 @@ environment = os.environ.get('ENV')
 
 
 def log_debug(*args):
-    if environment == "develop":
+    if environment == "develop" or environment == "debug":
         print("DEBUG:", *args)
 
 
